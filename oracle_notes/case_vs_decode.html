@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Level Query</title>
+    <title>Diff. B/W Case & Decode</title>
 </head>
 <body>
-    <h1>Level Query</h1>
-    <p>Add your content here...</p>
+    <h1>Decode</h1>
+    <p>Decode is an oracle-specific function used to compare one expression with multiple values.</p>
+    <p>It works only for equality conditions and returns a corresponding result.</p>
+    <p>Ex:- select decode(:a, 'APPLE', 1, 'apple', 2) d from dual.</p>
+
+    <h1>Case</h1>
+    <p>A case statement is used to apply conditional logic in SQL.</p>
+    <p>It works like IF-ELSE in the programming language and return a value based on condition.</p>
+    <p>Ex:- select case 
+        when :a = 'Apple' then 1
+        when :a = 'apple' then 2
+        else 3
+        end d from dual;
+    </p>
 
     <br>
     <a href="index.html">⬅ Back to Home</a>
