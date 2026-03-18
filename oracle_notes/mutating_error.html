@@ -5,8 +5,8 @@
 </head>
 <body>
     <h1>Mutating Table Error.</h1>
-    <p>When a Trigger fires on a table and we want to update or insert data on the same table ,</p>
-    <p>then Oracle will give Mutating Table Error.</p>
+    <p>When a Trigger firing or each row of a table and inside that trigger again we try to query or update the same table.</p>
+    <p> Oracle blocks it & throws Mutating Table Error.</p>
     <p>Oracle does this to maintain data consistency, because the table is currently unstable.</p>
 
     <br>
