@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Imperial Gulf | Premium Construction Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      /* Elegant Color Palette */
+      --gold-primary: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-gradient: linear-gradient(135deg, #C9A84C, #E8C97A, #D4B86E);
+      
+      --navy-deep: #0F172A;
+      --navy-mid: #1E293B;
+      --navy-light: #334155;
+      --navy-gradient: linear-gradient(135deg, #0F172A, #1E3A5F, #1E293B);
+      
+      --teal-soft: #14B8A6;
+      --teal-light: #5EEAD4;
+      --teal-gradient: linear-gradient(135deg, #14B8A6, #2DD4BF);
+      
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-200: #E2E8F0;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1E293B;
+      --slate-900: #0F172A;
+      
+      --white: #FFFFFF;
+      --white-soft: rgba(255, 255, 255, 0.95);
+      
+      /* Gradients */
+      --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E3A5F 40%, #1E293B 100%);
+      --gradient-card: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+      --gradient-gold-glow: linear-gradient(135deg, rgba(201, 168, 76, 0.3), rgba(232, 201, 122, 0.15), transparent);
+      --gradient-teal-glow: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(94, 234, 212, 0.1), transparent);
+      --gradient-button: linear-gradient(135deg, #C9A84C, #D4B86E, #E8C97A);
+      --gradient-button-hover: linear-gradient(135deg, #B8963C, #C9A84C, #D4B86E);
+      
+      /* Shadows & Glows */
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --shadow-deep: 0 20px 50px rgba(0, 0, 0, 0.25);
+      --glow-gold: 0 0 30px rgba(201, 168, 76, 0.35);
+      --glow-teal: 0 0 25px rgba(20, 184, 166, 0.25);
+      --glow-combined: 0 0 40px rgba(201, 168, 76, 0.2), 0 0 60px rgba(20, 184, 166, 0.15);
+      
+      /* Transitions */
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    
+    @keyframes gradient-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--slate-700);
+      background: var(--white);
+      background-image: 
+        radial-gradient(ellipse at 15% 15%, rgba(20, 184, 166, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 85%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(30, 58, 95, 0.02) 0%, transparent 70%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    .ig-page { max-width: 100%; overflow-x: hidden; }
+
+    /* ========== NAV ========== */
+    .ig-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 76px;
+      background: var(--white-soft);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      box-shadow: var(--shadow-soft);
+      position: sticky; top: 0; z-index: 1000;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-nav.scrolled {
+      height: 68px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .ig-logo { display: flex; align-items: center; gap: 14px; }
+    
+    .ig-logo-icon {
+      width: 44px; height: 44px;
+      transition: var(--transition-bounce);
+    }
+    
+    .ig-logo-icon:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+    
+    .ig-logo-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 20px; font-weight: 700;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.5px;
+    }
+    
+    .ig-logo-sub {
+      font-size: 10px; color: var(--slate-600);
+      letter-spacing: 2.5px; display: block;
+      margin-top: -3px; text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .ig-nav-links { display: flex; gap: 2rem; }
+    
+    .ig-nav-links a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 500;
+      color: var(--slate-700);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      position: relative;
+      padding: 6px 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold-gradient);
+      border-radius: 2px;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-nav-links a:hover {
+      color: var(--navy-deep);
+    }
+    
+    .ig-nav-links a:hover::after { width: 100%; }
+    
+    .ig-nav-cta {
+      background: var(--gradient-button);
+      color: var(--navy-deep);
+      padding: 11px 26px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-bounce);
+      box-shadow: var(--shadow-medium), 0 0 20px rgba(201, 168, 76, 0.25);
+    }
+    
+    .ig-nav-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.6s;
+    }
+    
+    .ig-nav-cta:hover {
+      transform: translateY(-2px);
+      background: var(--gradient-button-hover);
+      box-shadow: var(--shadow-deep), var(--glow-gold);
+    }
+    
+    .ig-nav-cta:hover::before { left: 100%; }
+
+    /* ========== HERO ========== */
+    .ig-hero {
+      background: var(--gradient-hero);
+      min-height: 640px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 0;
+      position: relative; overflow: hidden;
+      padding: 4rem 0;
+    }
+    
+    .ig-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 70%; height: 150%;
+      background: radial-gradient(ellipse, rgba(20, 184, 166, 0.12) 0%, transparent 60%);
+      border-radius: 50%;
+      animation: pulse-soft 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .ig-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; left: -10%;
+      width: 60%; height: 120%;
+      background: radial-gradient(ellipse, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
+      border-radius: 50%;
+      animation: pulse-soft 8s ease-in-out infinite reverse;
+      pointer-events: none;
+    }
+
+    .ig-hero-content {
+      padding: 4rem 3rem 4rem 4.5rem;
+      position: relative; z-index: 2;
+      animation: fadeInUp 0.9s ease-out;
+    }
+    
+    .ig-hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 30px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 2px;
+      padding: 7px 18px;
+      margin-bottom: 2rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .ig-hero-tag::before {
+      content: '✦';
+      color: var(--teal-light);
+      font-size: 14px;
+    }
+    
+    .ig-hero-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 54px; font-weight: 800;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 1.8rem;
+    }
+    
+    .ig-hero-title span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .ig-hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 6px; left: 2px; right: 2px;
+      height: 10px;
+      background: var(--gradient-gold-glow);
+      filter: blur(8px);
+      opacity: 0.6;
+      z-index: -1;
+    }
+    
+    .ig-hero-desc {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.85;
+      margin-bottom: 2.8rem;
+      max-width: 520px;
+      font-weight: 400;
+    }
+    
+    .ig-hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    
+    .btn-gold {
+      background: var(--gradient-button);
+      color: var(--navy-deep);
+      padding: 15px 36px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-bounce);
+      box-shadow: var(--shadow-medium), var(--glow-gold);
+    }
+    
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      transition: 0.6s;
+    }
+    
+    .btn-gold:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: var(--gradient-button-hover);
+      box-shadow: var(--shadow-deep), 0 0 45px rgba(201, 168, 76, 0.5);
+    }
+    
+    .btn-gold:hover::before { left: 100%; }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 15px 36px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      border: 2px solid rgba(201, 168, 76, 0.6);
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-bounce);
+      backdrop-filter: blur(5px);
+    }
+    
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 100%;
+      background: var(--gold-gradient);
+      transition: var(--transition-smooth);
+      z-index: -1;
+      opacity: 0.15;
+    }
+    
+    .btn-outline:hover {
+      color: var(--navy-deep);
+      border-color: var(--gold-primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium), var(--glow-gold);
+    }
+    
+    .btn-outline:hover::before { width: 100%; }
+
+    .ig-hero-visual {
+      position: relative; z-index: 2;
+      padding: 3rem 4rem 3rem 2rem;
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+    
+    .ig-hero-cards {
+      display: flex; flex-direction: column; gap: 18px;
+      max-width: 440px;
+    }
+    
+    .ig-stat-card {
+      background: var(--gradient-card);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-left: 4px solid var(--gold-primary);
+      padding: 18px 26px;
+      display: flex; align-items: center; gap: 20px;
+      border-radius: 16px;
+      transition: var(--transition-bounce);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .ig-stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--gradient-gold-glow);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-stat-card:hover {
+      transform: translateX(10px);
+      border-color: var(--gold-light);
+      box-shadow: var(--shadow-deep), var(--glow-gold);
+    }
+    
+    .ig-stat-card:hover::before { opacity: 1; }
+    
+    .ig-stat-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 34px; font-weight: 800;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      min-width: 78px;
+    }
+    
+    .ig-stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    
+    .ig-stat-label strong {
+      display: block;
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 3px;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* ========== MARQUEE ========== */
+    .ig-marquee {
+      background: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+      display: flex; align-items: center;
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .ig-marquee::before,
+    .ig-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .ig-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--white), transparent);
+    }
+    
+    .ig-marquee::after {
+      right: 0;
+      background: linear-gradient(90deg, transparent, var(--white));
+    }
+    
+    .ig-marquee-inner {
+      display: flex; gap: 4.5rem;
+      white-space: nowrap;
+      animation: marquee 35s linear infinite;
+      padding: 0 3rem;
+    }
+    
+    .ig-marquee-item {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: var(--navy-deep);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0 4px;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-marquee-item:hover {
+      color: var(--gold-primary);
+      transform: scale(1.05);
+    }
+    
+    .ig-marquee-dot {
+      color: var(--teal-soft);
+      font-size: 10px;
+      opacity: 0.8;
+    }
+
+    /* ========== SECTIONS ========== */
+    .ig-section {
+      padding: 7rem 4rem;
+      position: relative;
+    }
+    
+    .ig-section-alt {
+      background: linear-gradient(180deg, var(--slate-50), var(--white));
+      position: relative;
+    }
+    
+    .ig-section-dark {
+      background: var(--gradient-hero);
+      color: var(--white);
+      position: relative;
+    }
+    
+    .ig-section-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3.5px;
+      color: var(--teal-soft);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+    
+    .ig-section-label::before,
+    .ig-section-label::after {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--gold-gradient);
+      border-radius: 2px;
+    }
+    
+    .ig-section-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy-deep);
+      margin-bottom: 1.4rem;
+      line-height: 1.15;
+    }
+    
+    .ig-section-title.on-dark { color: var(--white); }
+    
+    .ig-section-title span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .ig-section-desc {
+      font-size: 17px;
+      color: var(--slate-600);
+      max-width: 620px;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+      font-weight: 400;
+    }
+    
+    .ig-section-desc.on-dark { color: rgba(255, 255, 255, 0.92); }
+    
+    .ig-divider {
+      width: 70px; height: 4px;
+      background: var(--gold-gradient);
+      margin-bottom: 2.2rem;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: var(--glow-gold);
+    }
+
+    /* ========== ABOUT ========== */
+    .ig-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5.5rem;
+      align-items: center;
+    }
+    
+    .ig-about-img-block {
+      background: var(--gradient-card);
+      min-height: 420px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+    }
+    
+    .ig-about-img-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .ig-about-img-pattern {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      width: 90%; height: 90%;
+      border: 2px solid var(--gold-primary);
+      border-radius: 20px;
+      z-index: 0;
+      box-shadow: var(--glow-gold);
+      opacity: 0.6;
+    }
+    
+    .ig-about-img-inner {
+      position: relative; z-index: 1;
+      padding: 3.5rem;
+      text-align: center;
+    }
+    
+    .ig-building-svg {
+      margin: 0 auto;
+      display: block;
+      animation: float 5s ease-in-out infinite;
+    }
+    
+    .ig-about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 2.8rem;
+    }
+    
+    .ig-feature-chip {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-left: 4px solid var(--gold-primary);
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--navy-deep);
+      border-radius: 12px;
+      transition: var(--transition-bounce);
+      box-shadow: var(--shadow-soft);
+      font-weight: 500;
+    }
+    
+    .ig-feature-chip:hover {
+      transform: translateX(6px);
+      border-color: var(--gold-light);
+      box-shadow: var(--shadow-medium), var(--glow-gold);
+      background: linear-gradient(135deg, var(--white), rgba(201, 168, 76, 0.03));
+    }
+    
+    .ig-feature-chip-icon {
+      color: var(--gold-primary);
+      font-size: 18px;
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ========== SERVICES ========== */
+    .ig-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    
+    .ig-service-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-top: 4px solid var(--gold-primary);
+      padding: 2.2rem 2rem;
+      border-radius: 20px;
+      transition: var(--transition-bounce);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .ig-service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: var(--gold-gradient);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-service-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold-light);
+      border-top-color: var(--gold-primary);
+      box-shadow: var(--shadow-deep), var(--glow-gold);
+    }
+    
+    .ig-service-card:hover::before { opacity: 1; }
+    
+    .ig-service-card:hover .ig-service-icon {
+      transform: scale(1.12);
+      box-shadow: var(--glow-gold);
+      border-color: var(--gold-light);
+      background: var(--gradient-gold-glow);
+    }
+    
+    .ig-service-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(20,184,166,0.08));
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: var(--transition-bounce);
+      position: relative;
+    }
+    
+    .ig-service-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 0.9rem;
+      position: relative;
+    }
+    
+    .ig-service-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 0; height: 3px;
+      background: var(--gold-gradient);
+      border-radius: 2px;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-service-card:hover .ig-service-title::after { width: 45px; }
+    
+    .ig-service-desc {
+      font-size: 15px;
+      color: var(--slate-600);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+    
+    .ig-service-list {
+      margin-top: 1.4rem;
+      padding-left: 0;
+      list-style: none;
+    }
+    
+    .ig-service-list li {
+      font-size: 13px;
+      color: var(--slate-600);
+      padding: 5px 0;
+      position: relative;
+      padding-left: 20px;
+      font-weight: 400;
+    }
+    
+    .ig-service-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--teal-soft);
+      font-weight: 700;
+      font-size: 12px;
+      background: rgba(20, 184, 166, 0.12);
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ========== STATS BANNER ========== */
+    .ig-stats-banner {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .ig-stat-item {
+      padding: 3.2rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--slate-200);
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-stat-item:hover {
+      background: linear-gradient(180deg, rgba(201,168,76,0.04), transparent);
+    }
+    
+    .ig-stat-item:last-child { border-right: none; }
+    
+    .ig-stat-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 4px;
+      background: var(--gold-gradient);
+      transition: var(--transition-smooth);
+      border-radius: 4px 4px 0 0;
+    }
+    
+    .ig-stat-item:hover::after { width: 70%; }
+    
+    .ig-stat-big {
+      font-family: 'Manrope', sans-serif;
+      font-size: 46px;
+      font-weight: 800;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+      line-height: 1;
+    }
+    
+    .ig-stat-desc {
+      font-size: 14px;
+      color: var(--slate-600);
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+    }
+
+    /* ========== PROJECTS ========== */
+    .ig-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    
+    .ig-project-tile {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-mid);
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      border-radius: 16px;
+      transition: var(--transition-bounce);
+    }
+    
+    .ig-project-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(15, 23, 42, 0.92) 0%, transparent 55%, rgba(201,168,76,0.08) 100%);
+      z-index: 1;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-project-tile::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      background: var(--gold-gradient) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-project-tile:hover {
+      transform: scale(1.04);
+      z-index: 10;
+      box-shadow: var(--shadow-deep), var(--glow-gold);
+    }
+    
+    .ig-project-tile:hover::before {
+      background: linear-gradient(0deg, rgba(15, 23, 42, 0.96) 0%, rgba(20, 184, 166, 0.15) 40%, transparent 100%);
+    }
+    
+    .ig-project-tile:hover::after { opacity: 1; }
+    
+    .ig-project-tile-inner {
+      padding: 1.5rem;
+      background: linear-gradient(0deg, rgba(15,23,42,0.92) 0%, transparent 100%);
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .ig-project-type {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      color: var(--teal-light);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 700;
+    }
+    
+    .ig-project-type::before {
+      content: '●';
+      font-size: 7px;
+      color: var(--gold-light);
+    }
+    
+    .ig-project-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* ========== CLIENTS ========== */
+    .ig-clients-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 3px;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 3px;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .ig-client-cell {
+      background: var(--white);
+      padding: 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy-deep);
+      letter-spacing: 0.6px;
+      text-align: center;
+      line-height: 1.5;
+      min-height: 95px;
+      border-radius: 13px;
+      transition: var(--transition-bounce);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Manrope', sans-serif;
+    }
+    
+    .ig-client-cell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-gold-glow);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-client-cell:hover {
+      color: var(--gold-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .ig-client-cell:hover::before { opacity: 1; }
+
+    /* ========== CONTACT ========== */
+    .ig-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5.5rem;
+      align-items: start;
+    }
+    
+    .ig-contact-item {
+      display: flex;
+      gap: 1.4rem;
+      margin-bottom: 2.4rem;
+      align-items: flex-start;
+      padding: 1.2rem;
+      border-radius: 14px;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-contact-item:hover {
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(20,184,166,0.04));
+      transform: translateX(6px);
+    }
+    
+    .ig-contact-icon {
+      width: 54px; height: 54px;
+      min-width: 54px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(20,184,166,0.1));
+      border: 1px solid var(--gold-primary);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-bounce);
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .ig-contact-icon::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 16px;
+      padding: 2px;
+      background: var(--gold-gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-contact-item:hover .ig-contact-icon {
+      transform: scale(1.08);
+      box-shadow: var(--glow-gold);
+    }
+    
+    .ig-contact-item:hover .ig-contact-icon::before { opacity: 1; }
+    
+    .ig-contact-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      color: var(--teal-soft);
+      letter-spacing: 2.2px;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    
+    .ig-contact-val {
+      font-size: 15px;
+      color: var(--slate-700);
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .ig-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .ig-input {
+      background: var(--white);
+      border: 2px solid var(--slate-200);
+      color: var(--navy-deep);
+      padding: 15px 20px;
+      font-size: 15px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      width: 100%;
+      border-radius: 14px;
+      outline: none;
+      transition: var(--transition-smooth);
+      font-weight: 400;
+    }
+    
+    .ig-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.15), var(--shadow-medium);
+      background: var(--slate-50);
+    }
+    
+    .ig-input::placeholder {
+      color: var(--slate-400);
+      opacity: 1;
+    }
+    
+    .ig-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    
+    textarea.ig-input {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    /* ========== FOOTER ========== */
+    .ig-footer {
+      background: var(--gradient-hero);
+      border-top: 1px solid rgba(201,168,76,0.25);
+      padding: 5rem 4rem 2.5rem;
+      position: relative;
+    }
+    
+    .ig-footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold-gradient);
+      box-shadow: var(--glow-gold);
+    }
+    
+    .ig-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
+    }
+    
+    .ig-footer-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-light);
+      letter-spacing: 2.5px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .ig-footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 35px; height: 3px;
+      background: var(--gold-gradient);
+      border-radius: 3px;
+    }
+    
+    .ig-footer-links {
+      list-style: none;
+    }
+    
+    .ig-footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .ig-footer-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      position: relative;
+      padding-left: 18px;
+      font-weight: 400;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .ig-footer-links a::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold-light);
+      font-size: 12px;
+      transition: var(--transition-smooth);
+      font-weight: 600;
+    }
+    
+    .ig-footer-links a:hover {
+      color: var(--white);
+      padding-left: 22px;
+    }
+    
+    .ig-footer-links a:hover::before {
+      transform: translateX(3px);
+      color: var(--teal-light);
+    }
+    
+    .ig-footer-brand {
+      font-family: 'Manrope', sans-serif;
+      font-size: 24px;
+      color: var(--gold-light);
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .ig-footer-tagline {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.4rem;
+      letter-spacing: 1.2px;
+      font-weight: 500;
+    }
+    
+    .ig-footer-bottom {
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding-top: 2.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    
+    .ig-footer-copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 400;
+    }
+    
+    .ig-footer-web {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      color: var(--gold-light);
+      text-decoration: none;
+      position: relative;
+      padding: 5px 0;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+    
+    .ig-footer-web::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--gold-gradient);
+      transform: scaleX(0);
+      transition: var(--transition-smooth);
+      transform-origin: right;
+      border-radius: 2px;
+    }
+    
+    .ig-footer-web:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1200px) {
+      .ig-hero { grid-template-columns: 1fr; text-align: center; }
+      .ig-hero-content { padding: 3.5rem 2.5rem; }
+      .ig-hero-visual { justify-content: center; padding: 2.5rem; }
+      .ig-hero-desc { margin: 0 auto 3rem; }
+      .ig-hero-btns { justify-content: center; }
+      .ig-about-grid, .ig-contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .ig-services-grid, .ig-projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .ig-stats-banner, .ig-clients-strip { grid-template-columns: repeat(2, 1fr); }
+      .ig-footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .ig-nav { padding: 0 2rem; height: 68px; }
+      .ig-nav-links { display: none; }
+      .ig-hero-title { font-size: 40px; }
+      .ig-section { padding: 5rem 2.5rem; }
+      .ig-services-grid, .ig-projects-grid, .ig-clients-strip { grid-template-columns: 1fr; }
+      .ig-stats-banner { grid-template-columns: 1fr 1fr; }
+      .ig-footer-grid { grid-template-columns: 1fr; }
+      .ig-input-row { grid-template-columns: 1fr; }
+      .ig-about-features { grid-template-columns: 1fr; }
+    }
+
+    /* ========== SUBTLE ANIMATIONS ========== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="ig-page">
+    <!-- NAV -->
+    <nav class="ig-nav" id="navbar">
+      <div class="ig-logo">
+        <svg class="ig-logo-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="4" y="18" width="6" height="14" fill="#C9A84C"/>
+          <rect x="12" y="10" width="6" height="22" fill="#C9A84C"/>
+          <rect x="20" y="4" width="6" height="28" fill="#C9A84C"/>
+          <rect x="28" y="14" width="5" height="18" fill="#C9A84C" opacity="0.6"/>
+          <rect x="4" y="32" width="29" height="2" fill="#C9A84C"/>
+          <polygon points="20,4 26,4 26,10 23,8" fill="#8B6914"/>
+        </svg>
+        <div>
+          <div class="ig-logo-text">IMPERIAL GULF</div>
+          <span class="ig-logo-sub">TRADING & CONTRACTING</span>
+        </div>
+      </div>
+      <div class="ig-nav-links">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Projects</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+      <button class="ig-nav-cta">Get a Quote</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="ig-hero">
+      <div class="ig-hero-content">
+        <div class="ig-hero-tag">Your Vision • Our Commitment</div>
+        <h1 class="ig-hero-title">
+          Building <span>Excellence</span><br>Across Qatar
+        </h1>
+        <p class="ig-hero-desc">
+          Imperial Gulf Trading & Contracting is Qatar's leading provider of Civil Construction, Interior Fit-Out, and MEP services — delivering world-class results for residential, commercial, and industrial projects since 2012.
+        </p>
+        <div class="ig-hero-btns">
+          <button class="btn-gold">Explore Our Work</button>
+          <button class="btn-outline">Contact Us</button>
+        </div>
+      </div>
+      <div class="ig-hero-visual">
+        <div class="ig-hero-cards">
+          <div class="ig-stat-card">
+            <div class="ig-stat-num">13+</div>
+            <div class="ig-stat-label">
+              <strong>Years of Excellence</strong>
+              Operating across Qatar since 2012
+            </div>
+          </div>
+          <div class="ig-stat-card">
+            <div class="ig-stat-num">200+</div>
+            <div class="ig-stat-label">
+              <strong>Projects Completed</strong>
+              Civil, MEP & Interior fit-out
+            </div>
+          </div>
+          <div class="ig-stat-card">
+            <div class="ig-stat-num">30+</div>
+            <div class="ig-stat-label">
+              <strong>Prestigious Clients</strong>
+              Qatar Airways, Hamad Airport & more
+            </div>
+          </div>
+          <div class="ig-stat-card">
+            <div class="ig-stat-num">ISO</div>
+            <div class="ig-stat-label">
+              <strong>ISO 9001 Certified</strong>
+              Quality management system compliant
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="ig-marquee">
+      <div class="ig-marquee-inner">
+        <span class="ig-marquee-item">CIVIL CONSTRUCTION</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">INTERIOR FIT-OUT</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">MEP WORKS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">HVAC SYSTEMS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">FIRE FIGHTING</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">ELV SYSTEMS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">GYPSUM WORKS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">PLUMBING</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">CIVIL CONSTRUCTION</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">INTERIOR FIT-OUT</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">MEP WORKS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">HVAC SYSTEMS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">FIRE FIGHTING</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">ELV SYSTEMS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">GYPSUM WORKS</span><span class="ig-marquee-dot">◆</span>
+        <span class="ig-marquee-item">PLUMBING</span><span class="ig-marquee-dot">◆</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="ig-section">
+      <div class="ig-about-grid">
+        <div class="ig-about-img-block">
+          <div class="ig-about-img-pattern"></div>
+          <div class="ig-about-img-inner">
+            <svg class="ig-building-svg" width="220" height="240" viewBox="0 0 220 240">
+              <rect x="20" y="200" width="180" height="4" fill="#C9A84C" opacity="0.8"/>
+              <rect x="60" y="60" width="100" height="144" fill="#252525" stroke="#C9A84C" stroke-width="1"/>
+              <rect x="75" y="75" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="103" y="75" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="131" y="75" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="75" y="108" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="103" y="108" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="131" y="108" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="75" y="141" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="103" y="141" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="131" y="141" width="18" height="22" fill="#C9A84C" opacity="0.4"/>
+              <rect x="95" y="168" width="30" height="36" fill="#1A1A1A" stroke="#C9A84C" stroke-width="1"/>
+              <rect x="60" y="55" width="100" height="8" fill="#C9A84C"/>
+              <rect x="15" y="160" width="45" height="44" fill="#1A1A1A" stroke="#C9A84C" stroke-width="1"/>
+              <rect x="160" y="148" width="45" height="56" fill="#1A1A1A" stroke="#C9A84C" stroke-width="1"/>
+              <rect x="20" y="170" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+              <rect x="34" y="170" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+              <rect x="165" y="158" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+              <rect x="180" y="158" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+              <rect x="165" y="175" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+              <rect x="180" y="175" width="10" height="12" fill="#C9A84C" opacity="0.3"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="ig-section-label">About Us</div>
+          <div class="ig-divider"></div>
+          <h2 class="ig-section-title">Qatar's Most Trusted<br><span>Construction Partner</span></h2>
+          <p class="ig-section-desc" style="margin-bottom:1.5rem">
+            Imperial Gulf Trading & Contracting is a leading provider of comprehensive maintenance and fit-out solutions across Qatar. We specialize in delivering high-quality services for buildings, residential homes, commercial offices, and all types of properties.
+          </p>
+          <p style="font-size:16px; color:var(--slate-600); line-height:1.8; margin-bottom:2.2rem; font-weight:400;">
+            With specialist subsidiary and affiliate group companies, we offer an extensive range of services in Civil, Interior Fit-Out, and Electro-Mechanical works — fully compliant with ISO 9001 quality management standards.
+          </p>
+          <div class="ig-about-features">
+            <div class="ig-feature-chip">
+              <svg class="ig-feature-chip-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="#C9A84C" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+              ISO Certified Quality
+            </div>
+            <div class="ig-feature-chip">
+              <svg class="ig-feature-chip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#C9A84C" stroke-width="1.5"/><path d="M8 4v4l3 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+              On-Time Delivery
+            </div>
+            <div class="ig-feature-chip">
+              <svg class="ig-feature-chip-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              Award-Winning Work
+            </div>
+            <div class="ig-feature-chip">
+              <svg class="ig-feature-chip-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12c0-3 2-4 4-4s4 2 4 4M10 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2M4 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Skilled Professionals
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="ig-stats-banner">
+      <div class="ig-stat-item">
+        <div class="ig-stat-big">2012</div>
+        <div class="ig-stat-desc">Established in Qatar</div>
+      </div>
+      <div class="ig-stat-item">
+        <div class="ig-stat-big">200+</div>
+        <div class="ig-stat-desc">Projects Delivered</div>
+      </div>
+      <div class="ig-stat-item">
+        <div class="ig-stat-big">30+</div>
+        <div class="ig-stat-desc">Major Clients</div>
+      </div>
+      <div class="ig-stat-item">
+        <div class="ig-stat-big">4</div>
+        <div class="ig-stat-desc">Core Divisions</div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="ig-section ig-section-alt">
+      <div class="ig-section-label">What We Do</div>
+      <div class="ig-divider"></div>
+      <h2 class="ig-section-title">Our Core <span>Services</span></h2>
+      <p class="ig-section-desc">Comprehensive construction solutions ensuring quality, efficiency, and innovation across every sector.</p>
+      <div class="ig-services-grid">
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="14" width="18" height="8" rx="1" stroke="#C9A84C" stroke-width="1.5"/><path d="M5 14V8l7-5 7 5v6" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><rect x="9" y="17" width="6" height="5" fill="#C9A84C" opacity="0.3"/></svg>
+          </div>
+          <div class="ig-service-title">Civil & Construction</div>
+          <div class="ig-service-desc">Full-scale construction from foundations to completion — residential, commercial, and industrial.</div>
+          <ul class="ig-service-list">
+            <li>Villa & highrise buildings</li>
+            <li>Concrete & structural works</li>
+            <li>Gypsum & flooring works</li>
+            <li>Painting & facade solutions</li>
+          </ul>
+        </div>
+
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="16" rx="1" stroke="#C9A84C" stroke-width="1.5"/><path d="M7 8h10M7 12h6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><rect x="14" y="10" width="5" height="6" rx="0.5" stroke="#C9A84C" stroke-width="1"/></svg>
+          </div>
+          <div class="ig-service-title">Interior Fit-Out</div>
+          <div class="ig-service-desc">Turnkey interior design & build solutions for offices, hospitality, retail, and luxury residences.</div>
+          <ul class="ig-service-list">
+            <li>Custom joinery & partitions</li>
+            <li>False ceilings & finishes</li>
+            <li>Bespoke furniture & décor</li>
+            <li>Space planning & design</li>
+          </ul>
+        </div>
+
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="5" stroke="#C9A84C" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="#C9A84C" opacity="0.4"/></svg>
+          </div>
+          <div class="ig-service-title">MEP Works — Electrical</div>
+          <div class="ig-service-desc">Low-voltage distribution systems, emergency power, and ELV solutions for all building types.</div>
+          <ul class="ig-service-list">
+            <li>MDB / SMDB distribution boards</li>
+            <li>CCTV & access control (ELV)</li>
+            <li>Fire alarm systems</li>
+            <li>Generators & UPS systems</li>
+          </ul>
+        </div>
+
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 6v12M20 6v12M4 18h16" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><path d="M8 10h2M14 10h2M8 14h2M14 14h2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ig-service-title">HVAC Systems</div>
+          <div class="ig-service-desc">Climate control installation, maintenance, and repair across schools, hospitals, villas, and towers.</div>
+          <ul class="ig-service-list">
+            <li>Chilled water & DX/VRF systems</li>
+            <li>Ventilation & air filtration</li>
+            <li>GI & black steel ducting</li>
+            <li>Energy efficiency systems</li>
+          </ul>
+        </div>
+
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2c-3 4-5 7-5 10a5 5 0 0010 0c0-3-2-6-5-10z" stroke="#C9A84C" stroke-width="1.5"/><path d="M9 15c0 1.7 1.3 3 3 3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ig-service-title">Fire Fighting Systems</div>
+          <div class="ig-service-desc">Expert installation of fire suppression, detection, and protection systems compliant with Qatar regulations.</div>
+          <ul class="ig-service-list">
+            <li>Automatic sprinkler systems</li>
+            <li>Fire hydrant & hose reels</li>
+            <li>FM-200 clean agent systems</li>
+            <li>Kitchen hood systems</li>
+          </ul>
+        </div>
+
+        <div class="ig-service-card">
+          <div class="ig-service-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 20h18M6 20V10l6-7 6 7v10" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 14v6M12 14v6M15 14v6" stroke="#C9A84C" stroke-width="1.5"/></svg>
+          </div>
+          <div class="ig-service-title">Plumbing Systems</div>
+          <div class="ig-service-desc">Complete plumbing & drainage engineering with focus on water efficiency and sustainability.</div>
+          <ul class="ig-service-list">
+            <li>Sanitary & drainage systems</li>
+            <li>Water treatment & distribution</li>
+            <li>Irrigation controls</li>
+            <li>Domestic water tanks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section class="ig-section ig-section-dark">
+      <div class="ig-section-label">Our Work</div>
+      <div class="ig-divider"></div>
+      <h2 class="ig-section-title on-dark">Featured <span>Projects</span></h2>
+      <p class="ig-section-desc on-dark" style="margin-bottom:2.8rem">From landmark commercial towers to luxury villa fit-outs — our portfolio spans Qatar's most prestigious developments.</p>
+
+      <div class="ig-projects-grid">
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><rect x="20" y="30" width="60" height="120" fill="#C9A84C"/><rect x="90" y="50" width="40" height="100" fill="#C9A84C"/><rect x="140" y="60" width="50" height="90" fill="#C9A84C"/><rect x="10" y="145" width="180" height="5" fill="#C9A84C"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">COMMERCIAL</div>
+            <div class="ig-project-name">Al-Emadi Business Center</div>
+          </div>
+        </div>
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><rect x="30" y="10" width="140" height="130" fill="#C9A84C" rx="2"/><rect x="45" y="25" width="30" height="20" fill="#0F172A"/><rect x="85" y="25" width="30" height="20" fill="#0F172A"/><rect x="125" y="25" width="30" height="20" fill="#0F172A"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">INTERIOR FIT-OUT</div>
+            <div class="ig-project-name">Bayanat Engineering Office</div>
+          </div>
+        </div>
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><ellipse cx="100" cy="75" rx="70" ry="60" fill="#C9A84C"/><ellipse cx="100" cy="75" rx="45" ry="40" fill="#1E293B"/><path d="M60 90 Q100 30 140 90" stroke="#C9A84C" fill="none" stroke-width="6"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">MEP</div>
+            <div class="ig-project-name">Al-Bandary Hotel & Apartments</div>
+          </div>
+        </div>
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><rect x="10" y="70" width="180" height="80" fill="#C9A84C"/><path d="M10 70 L100 20 L190 70" fill="#C9A84C" opacity="0.6"/><rect x="60" y="100" width="80" height="50" fill="#0F172A"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">CIVIL</div>
+            <div class="ig-project-name">Kahramaa QP Station — Abu Nakhla</div>
+          </div>
+        </div>
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><rect x="40" y="20" width="120" height="130" fill="#C9A84C"/><rect x="55" y="35" width="20" height="15" fill="#0F172A"/><rect x="85" y="35" width="20" height="15" fill="#0F172A"/><rect x="115" y="35" width="20" height="15" fill="#0F172A"/><rect x="55" y="60" width="20" height="15" fill="#0F172A"/><rect x="85" y="60" width="20" height="15" fill="#0F172A"/><rect x="115" y="60" width="20" height="15" fill="#0F172A"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">RESIDENTIAL</div>
+            <div class="ig-project-name">Foxhill Residential Building (B+G+13)</div>
+          </div>
+        </div>
+        <div class="ig-project-tile" style="background:#1E293B">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1" viewBox="0 0 200 150"><rect x="15" y="10" width="170" height="130" fill="#C9A84C" rx="1"/><path d="M15 50 H185M15 90 H185M70 10 V140M130 10 V140" stroke="#0F172A" stroke-width="4"/></svg>
+          <div class="ig-project-tile-inner">
+            <div class="ig-project-type">INTERIOR FIT-OUT</div>
+            <div class="ig-project-name">Al-Manhal Factory — Ascend Group</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="ig-section">
+      <div style="text-align:center; margin-bottom:3.5rem">
+        <div class="ig-section-label" style="text-align:center">Trusted By</div>
+        <div class="ig-divider" style="margin:0.5rem auto 1.2rem"></div>
+        <h2 class="ig-section-title">Our Valued <span>Clients</span></h2>
+        <p style="font-size:17px;color:var(--slate-600);max-width:540px;margin:0 auto;font-weight:400">Qatar's most prestigious institutions and organizations trust Imperial Gulf with their most important projects.</p>
+      </div>
+      <div class="ig-clients-strip">
+        <div class="ig-client-cell">Qatar<br>Airways</div>
+        <div class="ig-client-cell">Hamad<br>Int'l Airport</div>
+        <div class="ig-client-cell">Aspire<br>Zone</div>
+        <div class="ig-client-cell">Qatar<br>University</div>
+        <div class="ig-client-cell">Kahramaa</div>
+        <div class="ig-client-cell">Qatar Red<br>Crescent</div>
+        <div class="ig-client-cell">Awqaf<br>Qatar</div>
+        <div class="ig-client-cell">Al Kass<br>Sports</div>
+        <div class="ig-client-cell">Amiri<br>Guard</div>
+        <div class="ig-client-cell">Katara<br>Hospitality</div>
+        <div class="ig-client-cell">Barwa<br>Group</div>
+        <div class="ig-client-cell">Sephora<br>Qatar</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="ig-section ig-section-dark" id="contact">
+      <div class="ig-contact-grid">
+        <div>
+          <div class="ig-section-label">Get In Touch</div>
+          <div class="ig-divider"></div>
+          <h2 class="ig-section-title on-dark">Start Your <span>Project</span> Today</h2>
+          <p class="ig-section-desc on-dark">Ready to bring your vision to life? Our team is here to help with expert guidance from concept to completion.</p>
+
+          <div class="ig-contact-item">
+            <div class="ig-contact-icon">
+              <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.2 2 5 4.2 5 7c0 4.5 5 11 5 11s5-6.5 5-11c0-2.8-2.2-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" stroke="#C9A84C" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="ig-contact-label">Location</div>
+              <div class="ig-contact-val">C-Ring Road, Al-Emadi Business Center, Street No. 230, Doha, Qatar</div>
+            </div>
+          </div>
+          <div class="ig-contact-item">
+            <div class="ig-contact-icon">
+              <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 4h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="#C9A84C" stroke-width="1.5"/><path d="M3 5l7 6 7-6" stroke="#C9A84C" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="ig-contact-label">Email</div>
+              <div class="ig-contact-val">info@imperialgulfqa.com</div>
+            </div>
+          </div>
+          <div class="ig-contact-item">
+            <div class="ig-contact-icon">
+              <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 4s-1 0-1 2c0 8 6 12 12 12 2 0 2-1 2-1l1-4-3-1-1 1s-3-1-5-5l1-1-1-3H4z" stroke="#C9A84C" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="ig-contact-label">Phone</div>
+              <div class="ig-contact-val">+974 7786 7776 / +974 5111 7556</div>
+            </div>
+          </div>
+          <div class="ig-contact-item">
+            <div class="ig-contact-icon">
+              <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#C9A84C" stroke-width="1.5"/><path d="M10 6v5l3 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="ig-contact-label">Working Hours</div>
+              <div class="ig-contact-val">Sun – Thu: 8:00 AM – 6:00 PM</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="ig-contact-form">
+            <div class="ig-input-row">
+              <input class="ig-input" type="text" placeholder="Your Name" />
+              <input class="ig-input" type="email" placeholder="Email Address" />
+            </div>
+            <input class="ig-input" type="tel" placeholder="Phone Number" />
+            <select class="ig-input" style="background:var(--white);color:var(--slate-700);border-color:var(--slate-200)">
+              <option value="" disabled selected>Select Service</option>
+              <option>Civil & Construction</option>
+              <option>Interior Fit-Out</option>
+              <option>MEP Works</option>
+              <option>HVAC Systems</option>
+              <option>Fire Fighting</option>
+              <option>Plumbing</option>
+            </select>
+            <textarea class="ig-input" placeholder="Tell us about your project..."></textarea>
+            <button class="btn-gold" style="padding:16px;font-size:15px;letter-spacing:0.5px;margin-top:8px">SEND YOUR INQUIRY</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ig-footer">
+      <div class="ig-footer-grid">
+        <div>
+          <div class="ig-footer-brand">IMPERIAL GULF</div>
+          <div class="ig-footer-tagline">TRADING & CONTRACTING</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.85);line-height:1.8;max-width:300px;font-weight:400">Your Vision, Our Commitment. Qatar's leading construction and contracting company since 2012.</p>
+          <div style="display:flex;gap:12px;margin-top:1.2rem">
+            <div style="width:40px;height:40px;border:1px solid rgba(201,168,76,0.4);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:var(--transition-smooth);cursor:pointer;background:rgba(255,255,255,0.08)">
+              <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="7" cy="7" r="2" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10.5" cy="3.5" r="0.7" fill="#C9A84C"/></svg>
+            </div>
+            <div style="width:40px;height:40px;border:1px solid rgba(201,168,76,0.4);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:var(--transition-smooth);cursor:pointer;background:rgba(255,255,255,0.08)">
+              <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M2 3h10M2 7h10M2 11h6" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-footer-title">Services</div>
+          <ul class="ig-footer-links">
+            <li><a href="#">Civil Construction</a></li>
+            <li><a href="#">Interior Fit-Out</a></li>
+            <li><a href="#">MEP Works</a></li>
+            <li><a href="#">HVAC Systems</a></li>
+            <li><a href="#">Fire Fighting</a></li>
+            <li><a href="#">Plumbing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="ig-footer-title">Company</div>
+          <ul class="ig-footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Certifications</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="ig-footer-title">Contact</div>
+          <ul class="ig-footer-links">
+            <li><a href="#">C-Ring Road, Doha</a></li>
+            <li><a href="#">+974 7786 7776</a></li>
+            <li><a href="#">info@imperialgulfqa.com</a></li>
+            <li><a href="#">www.imperialgulfqa.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ig-footer-bottom">
+        <div class="ig-footer-copy">© 2025 Imperial Gulf Trading & Contracting. All rights reserved.</div>
+        <a href="#" class="ig-footer-web">www.imperialgulfqa.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Subtle scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.ig-service-card, .ig-project-tile, .ig-stat-card').forEach(el => {
+      el.classList.add('animate-on-scroll');
+      observer.observe(el);
+    });
+
+    // Button ripple effect
+    document.querySelectorAll('.btn-gold, .btn-outline, .ig-nav-cta').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          width: 20px; height: 20px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.6);
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          left: ${x}px; top: ${y}px;
+          pointer-events: none;
+        `;
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add ripple animation keyframe
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
