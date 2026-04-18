@@ -1,33 +1,64 @@
-name: Streamlit Keep Alive
+# name: Streamlit Keep Alive
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
+
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: "0 * * * *"   # every hour
+
+# jobs:
+#   keep-alive:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout main branch
+#         uses: actions/checkout@v4
+#         with:
+#           ref: main
+#           fetch-depth: 0
+
+#       - name: Configure Git
+#         run: |
+#           git config user.name "github-actions[bot]"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+#       - name: Create empty commit
+#         run: |
+#           git commit --allow-empty -m "keep alive"
+
+#       - name: Push commit
+#         run: |
+#           git push origin main
+
+
+name: Daily Auto Commit
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"   # every hour
+    - cron: '0 0 * * *'   # runs every day at midnight UTC
+  workflow_dispatch:        # lets you trigger it manually too
 
 jobs:
-  keep-alive:
+  auto-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
 
-      - name: Configure Git
+      - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create empty commit
+      - name: Update activity log
         run: |
-          git commit --allow-empty -m "keep alive"
+          echo "Last active: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> activity.log
 
-      - name: Push commit
+      - name: Commit and push
         run: |
-          git push origin main
+          git add activity.log
+          git commit -m "chore: daily activity update $(date -u '+%Y-%m-%d')"
+          git push
