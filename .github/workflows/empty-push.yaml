@@ -62,3 +62,5 @@ jobs:
           git add activity.log
           git commit -m "chore: daily activity update $(date -u '+%Y-%m-%d')"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
