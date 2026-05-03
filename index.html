@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobashshir Hasan | Oracle APEX Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --site-bg: #05050A;
+      --primary: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --primary-light: #60a5fa;
+      --cyan: #06b6d4;
+      --cyan-light: #22d3ee;
+      --purple: #8b5cf6;
+      --white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-secondary: #cbd5e1;
+      --surface: rgba(255,255,255,0.03);
+      --surface-hover: rgba(255,255,255,0.06);
+      --border: rgba(59,130,246,0.15);
+      --border-active: rgba(59,130,246,0.4);
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+      --glow-blue: 0 0 25px rgba(59,130,246,0.3);
+      --glow-cyan: 0 0 25px rgba(6,182,212,0.3);
+      --text-gradient: linear-gradient(135deg,#3b82f6,#06b6d4,#8b5cf6);
+      --hero-bg: linear-gradient(-54deg,#05050A -23%,#0a1628,#05050A 51%);
+      --max-w: 1080px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+      font-size: 62.5%;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat',sans-serif;
+      background: var(--site-bg);
+      color: var(--white);
+      font-size: 1.6rem;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--primary); color: #fff; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--site-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
+    .section { padding: 8rem 0; }
+    .section-label {
+      font-size: 1.2rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: 3.6rem; font-weight: 700; margin-bottom: 1.6rem; line-height: 1.15;
+    }
+    .section-title span {
+      background: var(--text-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-desc {
+      font-size: 1.5rem; color: var(--text-muted);
+      max-width: 600px; line-height: 1.8; margin-bottom: 3.2rem;
+    }
+    .text-gradient {
+      background: var(--text-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 1.1rem 2.4rem; border-radius: 100px;
+      font-family: 'Montserrat',sans-serif; font-size: 1.4rem; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg,var(--primary),var(--cyan));
+      color: #fff; box-shadow: var(--glow-blue);
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: var(--glow-cyan); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid var(--border-active);
+    }
+    .btn-outline:hover { background: rgba(59,130,246,0.1); border-color: var(--primary); }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.6rem 0;
+    }
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--max-w); margin: 0 auto; padding: 0.8rem 2rem;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(20px);
+      border: 1px solid rgba(59,130,246,0.1);
+      border-radius: var(--radius-md);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--white);
+    }
+    .nav-logo-img {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg,var(--primary),var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 700; color: #fff;
+    }
+    .nav-logo-text { font-size: 1.6rem; font-weight: 600; }
+    .nav-links { display: flex; align-items: center; gap: 2.4rem; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 1.4rem; font-weight: 500; position: relative;
+      padding: 4px 0; transition: var(--transition);
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 2px; background: var(--primary);
+      transform: scaleX(0); transform-origin: left;
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--primary); }
+    /* Menu button (desktop hidden, mobile visible) */
+    .menu-btn {
+      display: none; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg,var(--primary),var(--cyan));
+      border: none; cursor: pointer; color: #fff; font-size: 2rem;
+      transition: var(--transition); z-index: 102;
+    }
+    .menu-btn:hover { transform: scale(1.1); }
+    /* Mobile bottom sheet menu */
+    .mobile-menu {
+      display: none;
+      position: fixed; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+      z-index: 101;
+      background: rgba(5,5,10,0.92); backdrop-filter: blur(24px);
+      border: 1px solid var(--cyan); border-radius: var(--radius-md);
+      padding: 0.8rem 1.2rem;
+      opacity: 0; pointer-events: none;
+      transition: var(--transition);
+    }
+    .mobile-menu.open {
+      opacity: 1; pointer-events: all;
+    }
+    .mobile-menu-links {
+      display: flex; align-items: center; gap: 0.8rem;
+      list-style: none;
+    }
+    .mobile-menu-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 1.2rem; font-weight: 500; padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm); transition: var(--transition);
+      white-space: nowrap;
+    }
+    .mobile-menu-links a:hover,
+    .mobile-menu-links a.active { color: var(--white); background: rgba(59,130,246,0.15); }
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100dvh; display: flex; align-items: center;
+      background: var(--hero-bg); background-size: 200%;
+      animation: heroReveal 3s linear forwards;
+      position: relative; overflow: hidden;
+    }
+    @keyframes heroReveal {
+      0% { background-size: 200%; }
+      50% { background-position: 70%; }
+      100% { background-size: 100%; }
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -50%; right: -20%; width: 70%; height: 150%;
+      background: radial-gradient(ellipse,rgba(59,130,246,0.1),transparent 60%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -30%; left: -10%; width: 60%; height: 120%;
+      background: radial-gradient(ellipse,rgba(6,182,212,0.06),transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr auto; gap: 8rem;
+      align-items: center; width: 100%;
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem;
+      position: relative; z-index: 1;
+    }
+    .hero-name {
+      font-size: 4.4rem; font-weight: 600; line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+    .hero-role {
+      font-size: 2rem; font-weight: 400; color: var(--text-secondary);
+      margin-bottom: 2.4rem;
+    }
+    .hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image {
+      width: 240px; height: 240px; border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(59,130,246,0.3);
+      box-shadow: var(--glow-blue);
+      transition: var(--transition);
+    }
+    .hero-image:hover { transform: scale(1.05); }
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: flex; align-items: center; gap: 4.4rem;
+      justify-content: space-around; flex-wrap: wrap;
+    }
+    .about-image-wrap { position: relative; }
+    .about-image {
+      width: 200px; height: 200px; border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border-active);
+      box-shadow: var(--glow-blue);
+      transition: var(--transition);
+    }
+    .about-image:hover { transform: scale(1.08); }
+    .about-text { flex: 1; min-width: 280px; }
+    .about-text p {
+      font-size: 1.6rem; color: var(--text-secondary);
+      line-height: 1.9; margin-bottom: 1.6rem;
+    }
+    .about-socials {
+      display: flex; gap: 1.2rem; margin-top: 2rem;
+    }
+    .about-socials a {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); text-decoration: none;
+      transition: var(--transition); font-size: 1.8rem;
+    }
+    .about-socials a:hover {
+      border-color: var(--primary); color: var(--primary);
+      transform: translateY(-3px); box-shadow: var(--glow-blue);
+    }
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: flex; gap: 4rem; align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .terminal {
+      min-width: 320px; flex: 1;
+      background: #0a0a14; border-radius: var(--radius-md);
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .terminal-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 1rem 1.4rem; background: #14141e;
+    }
+    .terminal-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+    .terminal-body {
+      padding: 1.6rem; font-family: 'Courier New',monospace;
+      font-size: 1.3rem; color: #e0e0e0; line-height: 1.8;
+      min-height: 200px;
+    }
+    .terminal-line { margin-bottom: 0.4rem; }
+    .terminal-prompt { color: var(--cyan); }
+    .terminal-user { color: #ca88d1; }
+    .terminal-sep { color: var(--primary); }
+    .terminal-cursor {
+      display: inline-block; width: 8px; height: 1.4rem;
+      background: var(--cyan); animation: blink 1s step-end infinite;
+      vertical-align: text-bottom; margin-left: 2px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .skill-badges {
+      flex: 1; min-width: 280px;
+      display: flex; flex-wrap: wrap; gap: 1.2rem;
+      align-content: flex-start;
+    }
+    .skill-badge {
+      padding: 0.8rem 1.6rem; border-radius: 100px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 1.3rem; font-weight: 500; color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .skill-badge:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: var(--primary); color: var(--white);
+      transform: translateY(-2px); box-shadow: var(--glow-blue);
+    }
+    .skill-badge.primary {
+      background: linear-gradient(135deg,rgba(59,130,246,0.2),rgba(6,182,212,0.1));
+      border-color: var(--primary); color: var(--white);
+    }
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem;
+    }
+    .project-card {
+      width: 332px; border-radius: var(--radius-lg); overflow: hidden;
+      background: #000; position: relative;
+      box-shadow: var(--shadow); transition: var(--transition);
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .project-card-image {
+      width: 100%; height: 160px; object-fit: cover; display: block;
+    }
+    .project-card-overlay {
+      padding: 1.6rem; background: #1a1a2e;
+      transition: var(--transition);
+    }
+    .project-card:hover .project-card-overlay {
+      background: linear-gradient(135deg,#1a1a2e,#0d0d1a);
+    }
+    .project-card-title {
+      font-size: 1.8rem; font-weight: 600; margin-bottom: 0.6rem;
+    }
+    .project-card-desc {
+      font-size: 1.3rem; color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+    .project-card-btns {
+      display: flex; gap: 1.6rem;
+    }
+    .project-card-btns a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 1.2rem; font-weight: 500; position: relative;
+      padding: 2px 0; transition: var(--transition);
+    }
+    .project-card-btns a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 1.5px; background: var(--primary);
+      transform: scaleX(0); transform-origin: left;
+      transition: var(--transition);
+    }
+    .project-card-btns a:hover { color: var(--white); }
+    .project-card-btns a:hover::after { transform: scaleX(1); }
+    /* ===== BLOG ===== */
+    .blog-grid {
+      display: flex; flex-wrap: wrap; gap: 2.4rem;
+      justify-content: center;
+    }
+    .blog-card {
+      width: 320px; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: var(--transition); cursor: pointer;
+      text-decoration: none; color: inherit;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow), var(--glow-blue);
+      border-color: var(--border-active);
+    }
+    .blog-card-image {
+      width: 100%; height: 140px; object-fit: cover;
+      transition: var(--transition); display: block;
+    }
+    .blog-card:hover .blog-card-image { transform: scale(1.08); }
+    .blog-card-body {
+      padding: 1.6rem; position: relative;
+      background: radial-gradient(circle at 30% 50%,rgba(59,130,246,0.08),transparent);
+      transition: var(--transition);
+    }
+    .blog-card:hover .blog-card-body {
+      background: radial-gradient(circle at 30% 50%,rgba(59,130,246,0.15),transparent);
+    }
+    .blog-card-title {
+      font-size: 1.6rem; font-weight: 600; margin-bottom: 0.6rem;
+      transition: var(--transition);
+    }
+    .blog-card:hover .blog-card-title {
+      background: var(--text-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .blog-card-meta {
+      font-size: 1.2rem; color: var(--text-muted);
+    }
+    .blog-card-desc {
+      font-size: 1.3rem; color: var(--text-muted);
+      margin-top: 0.6rem; line-height: 1.5;
+    }
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0a0a1a; border-top: 1px solid var(--border);
+      padding: 4rem 0 2.4rem;
+    }
+    .footer-grid {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 2rem;
+    }
+    .footer-brand .nav-logo-text {
+      font-size: 1.8rem; margin-bottom: 0.4rem; display: block;
+    }
+    .footer-brand p {
+      font-size: 1.3rem; color: var(--text-muted); max-width: 300px;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); text-decoration: none;
+      transition: var(--transition); font-size: 1.8rem;
+    }
+    .footer-socials a:hover {
+      border-color: var(--primary); color: var(--primary);
+      transform: translateY(-3px); box-shadow: var(--glow-blue);
+    }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 1.3rem; transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      margin-top: 2.4rem; padding-top: 2rem;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+      font-size: 1.2rem; color: var(--text-muted);
+    }
+    /* ===== SCROLL ANIMATION ===== */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .hero-btns { justify-content: center; }
+      .hero-image-wrap { order: -1; display: flex; justify-content: center; }
+      .hero-name { font-size: 3.4rem; }
+      .about-grid { text-align: center; justify-content: center; }
+      .about-socials { justify-content: center; }
+      .skills-grid { flex-direction: column; align-items: center; }
+      .terminal { width: 100%; }
+      .section-title { font-size: 2.8rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-btn { display: flex; }
+      .mobile-menu { display: block; }
+      .hero-name { font-size: 3rem; }
+      .hero-role { font-size: 1.6rem; }
+      .hero-image { width: 180px; height: 180px; }
+      .section { padding: 5rem 0; }
+      .footer-grid { flex-direction: column; text-align: center; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="home">
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#home" class="nav-logo">
+        <div class="nav-logo-img">MH</div>
+        <span class="nav-logo-text">Mobashshir Hasan</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-name">Mobashshir Hasan</h1>
+        <p class="hero-role">A Passionate <span class="text-gradient">Oracle APEX Developer</span></p>
+        <div class="hero-btns">
+          <a href="https://www.linkedin.com/in/mobashshir-hasan/" target="_blank" class="btn btn-primary">
+            Want to know more &#8594;
+          </a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div style="width:240px;height:240px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:7rem;font-weight:700;color:#fff;box-shadow:var(--glow-blue);transition:var(--transition)" class="hero-image">MH</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Who <span>I Am</span></h2>
+      <div class="about-grid">
+        <div class="about-image-wrap fade-up">
+          <div style="width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-size:6rem;font-weight:700;color:#fff;box-shadow:var(--glow-blue);transition:var(--transition)" class="about-image">MH</div>
+        </div>
+        <div class="about-text fade-up">
+          <p>Experienced Oracle APEX, SQL and PL/SQL professional with strong expertise in database design, complex queries, stored procedures, functions, cursors, and performance optimization.</p>
+          <p>Hands-on experience in developing and maintaining Oracle database solutions for real-world business scenarios, including reporting, data validation, and automation. Skilled in debugging, exception handling, and writing efficient, scalable database programs to support enterprise-level applications.</p>
+          <div class="about-socials">
+            <a href="https://www.linkedin.com/in/mobashshir-hasan/" target="_blank" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/mobashshirhasan" target="_blank" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://www.instagram.com/mobashshirhasan/" target="_blank" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://twitter.com/home" target="_blank" title="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+            <a href="mailto:mobashshir.dev12@gmail.com" title="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+            <a href="../docs/mobashshir_dev.pdf" target="_blank" title="Resume">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-3.06 16L7.4 14.46l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41L10.94 18zM13 9V3.5L18.5 9H13z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section" id="skills" style="background:linear-gradient(180deg,transparent,rgba(59,130,246,0.02),transparent)">
+    <div class="container">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <p class="section-desc">Technologies and tools I work with daily to build enterprise solutions.</p>
+      <div class="skills-grid">
+        <div class="terminal fade-up">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-user">mobashshir-hasan</span><span class="terminal-sep">@</span>root: ~$ . printskills</div>
+            <div class="terminal-line"><br/></div>
+            <div class="terminal-line"><span style="color:var(--primary-light)">&#9654;</span> Oracle APEX</div>
+            <div class="terminal-line"><span style="color:var(--cyan)">&#9654;</span> PL/SQL – SQL</div>
+            <div class="terminal-line"><span style="color:var(--primary-light)">&#9654;</span> Oracle Forms & Reports</div>
+            <div class="terminal-line"><span style="color:var(--cyan)">&#9654;</span> JavaScript & HTML, CSS</div>
+            <div class="terminal-line"><span style="color:var(--primary-light)">&#9654;</span> Python</div>
+            <div class="terminal-line"><span style="color:var(--cyan)">&#9654;</span> Interface Designing</div>
+            <div class="terminal-line"><span style="color:var(--primary-light)">&#9654;</span> GitHub</div>
+            <div class="terminal-line"><span style="color:var(--cyan)">&#9654;</span> RESTful API</div>
+            <div class="terminal-line"><span style="color:var(--primary-light)">&#9654;</span> Communication Skills</div>
+            <div class="terminal-line"><br/></div>
+            <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-cursor"></span></div>
+          </div>
+        </div>
+        <div class="skill-badges fade-up">
+          <span class="skill-badge primary">Oracle</span>
+          <span class="skill-badge">SQL</span>
+          <span class="skill-badge primary">PL/SQL</span>
+          <span class="skill-badge">Oracle APEX</span>
+          <span class="skill-badge">Oracle Forms</span>
+          <span class="skill-badge">Oracle Reports</span>
+          <span class="skill-badge primary">Python</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">HTML5</span>
+          <span class="skill-badge">CSS3</span>
+          <span class="skill-badge">Bootstrap</span>
+          <span class="skill-badge primary">GitHub</span>
+          <span class="skill-badge">RESTful API</span>
+          <span class="skill-badge">Interface Designing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">My <span>Projects</span></h2>
+      <p class="section-desc">Some of the projects I have worked on.</p>
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <img class="project-card-image" src="https://dt2sdf0db8zob.cloudfront.net/wp-content/uploads/2021/06/copy-of-the-6-best-restaurant-website-templates-1.png" alt="Restaurant" loading="lazy" />
+          <div class="project-card-overlay">
+            <div class="project-card-title">Restaurant</div>
+            <div class="project-card-desc">Coming Soon.</div>
+            <div class="project-card-btns">
+              <a href="#">GitHub</a>
+              <a href="#">Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-up">
+          <img class="project-card-image" src="https://dt2sdf0db8zob.cloudfront.net/wp-content/uploads/2021/06/copy-of-the-6-best-restaurant-website-templates-1.png" alt="Restaurant" loading="lazy" />
+          <div class="project-card-overlay">
+            <div class="project-card-title">Restaurant</div>
+            <div class="project-card-desc">Coming Soon.</div>
+            <div class="project-card-btns">
+              <a href="#">GitHub</a>
+              <a href="#">Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section class="section" id="blog" style="background:linear-gradient(180deg,transparent,rgba(6,182,212,0.015),transparent)">
+    <div class="container">
+      <div class="section-label">Articles</div>
+      <h2 class="section-title">My <span>Blog</span></h2>
+      <p class="section-desc">I write about Oracle APEX, PL/SQL, and database topics.</p>
+      <div class="blog-grid">
+        <a class="blog-card fade-up" href="/blog/classis_report/">
+          <img class="blog-card-image" src="https://mobashshirhasan.pages.dev/img/classic_report.png" alt="Classic Reports and Templates" loading="lazy" onerror="this.style.display='none'" />
+          <div class="blog-card-body">
+            <div class="blog-card-title">Classic Reports and Templates</div>
+            <div class="blog-card-meta">Mar 3, 2026</div>
+            <div class="blog-card-desc">Classic Reports and Templates</div>
+          </div>
+        </a>
+        <a class="blog-card fade-up" href="/blog/forward_declaration/">
+          <img class="blog-card-image" src="https://mobashshirhasan.pages.dev/img/frwd_dec.jpeg" alt="Forward Declaration" loading="lazy" onerror="this.style.display='none'" />
+          <div class="blog-card-body">
+            <div class="blog-card-title">Forward Declaration</div>
+            <div class="blog-card-meta">Feb 28, 2026</div>
+            <div class="blog-card-desc">Declaring a procedure or function before defining it.</div>
+          </div>
+        </a>
+        <a class="blog-card fade-up" href="/blog/diff_btw_para_varaiable/">
+          <img class="blog-card-image" src="https://mobashshirhasan.pages.dev/img/parameter&variable.png" alt="Parameter vs Variable" loading="lazy" onerror="this.style.display='none'" />
+          <div class="blog-card-body">
+            <div class="blog-card-title">Difference B/W Parameter & Variable in PL/SQL</div>
+            <div class="blog-card-meta">Feb 28, 2026</div>
+            <div class="blog-card-desc">A variable is used to store data inside a PL/SQL block for internal processing.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact">
+    <div class="container" style="text-align:center">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+      <p class="section-desc" style="margin:0 auto 3.2rem">
+        Have a project or opportunity? Feel free to reach out.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center">
+        <a href="mailto:mobashshir.dev12@gmail.com" class="btn btn-primary">
+          &#9993; Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/mobashshir-hasan/" target="_blank" class="btn btn-outline">
+          LinkedIn
+        </a>
+        <a href="https://github.com/mobashshirhasan" target="_blank" class="btn btn-outline">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo-text">Mobashshir Hasan</span>
+          <p>Oracle APEX Developer passionate about building enterprise database solutions.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#blog">Blog</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/mobashshir-hasan/" target="_blank" title="LinkedIn">in</a>
+          <a href="https://github.com/mobashshirhasan" target="_blank" title="GitHub">GH</a>
+          <a href="https://www.instagram.com/mobashshirhasan/" target="_blank" title="Instagram">IG</a>
+          <a href="mailto:mobashshir.dev12@gmail.com" title="Email">&#9993;</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mobashshir Hasan. All rights reserved.</span>
+        <span>Designed with &#9829; &amp; &#9729;</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.style.background = 'rgba(0,0,0,0.6)';
+      navbar.style.backdropFilter = 'blur(16px)';
+    } else {
+      navbar.style.background = '';
+      navbar.style.backdropFilter = '';
+    }
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    menuBtn.innerHTML = menuOpen ? '&#10005;' : '&#9776;';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      menuBtn.innerHTML = '&#9776;';
+    });
+  });
+
+  // Active nav link highlighting
+  const sections = document.querySelectorAll('section[id], #home');
+  const navLinks = document.querySelectorAll('#navLinks a, .mobile-menu-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+
+  // Scroll fade-up animations
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+</script>
+
+</body>
+</html>
