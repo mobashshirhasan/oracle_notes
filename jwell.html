@@ -19,13 +19,15 @@
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgba(102, 126, 234, 0.8);
+            backdrop-filter: blur(10px);
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
         .header-content {
@@ -96,18 +98,20 @@
         }
 
         button {
-            background: #ff6b6b;
+            background: rgba(255, 107, 107, 0.8);
+            backdrop-filter: blur(10px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.3);
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
 
         button:hover {
-            background: #ff5252;
+            background: rgba(255, 82, 82, 0.9);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
         }
 
         .hero {
@@ -141,35 +145,43 @@
         }
 
         .btn-primary {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             color: #667eea;
             padding: 15px 40px;
             font-size: 16px;
             font-weight: bold;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.5);
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .btn-primary:hover {
             transform: scale(1.05);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
             color: white;
             padding: 15px 40px;
             font-size: 16px;
-            border: 2px solid white;
+            border: 1.5px solid rgba(255,255,255,0.4);
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #667eea;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(12px);
+            color: white;
+            border-color: rgba(255,255,255,0.6);
         }
 
         .container {
@@ -197,16 +209,20 @@
         }
 
         .product-card {
-            background: white;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
         .product-image {
@@ -277,13 +293,15 @@
         }
 
         .modal-content {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             margin: 5% auto;
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 20px;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .modal-header {
@@ -330,16 +348,21 @@
         textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            border: 1.5px solid rgba(200, 200, 200, 0.5);
+            border-radius: 10px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
         }
 
         input:focus,
         textarea:focus {
             outline: none;
             border-color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         textarea {
@@ -348,10 +371,13 @@
         }
 
         .cart-container {
-            background: white;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .cart-item {
@@ -392,10 +418,12 @@
         }
 
         .cart-summary {
-            background: #f5f5f5;
+            background: rgba(102, 126, 234, 0.1);
+            backdrop-filter: blur(10px);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .summary-row {
@@ -423,7 +451,19 @@
 
         .feature {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
         }
 
         .feature-icon {
@@ -495,24 +535,29 @@
         }
 
         .tab-button {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
             color: #333;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.3);
             padding: 15px 30px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
         }
 
         .tab-button.active {
             color: #667eea;
             border-bottom-color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .tab-button:hover {
-            background: #f5f5f5;
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(255,255,255,0.5);
         }
 
         .tab-content {
@@ -581,7 +626,8 @@
                         🛒
                         <span class="cart-count" id="cartCount">0</span>
                     </div>
-                    <button onclick="toggleAuthModal()">Login/Signup</button>
+                    <button id="authButton" onclick="toggleAuthModal()">Login/Signup</button>
+                    <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
                 </div>
             </nav>
         </div>
@@ -604,10 +650,10 @@
         <!-- Tab Navigation -->
         <div style="margin: 40px 0;">
             <div class="tabs">
-                <button class="tab-button active" onclick="showTab('products')">Shop Products</button>
-                <button class="tab-button" onclick="showTab('sell')">Sell with Us</button>
-                <button class="tab-button" onclick="showTab('orders')">My Orders</button>
-                <button class="tab-button" onclick="showTab('cart')">Shopping Cart</button>
+                <button class="tab-button active" data-tab="products" onclick="showTab('products')">Shop Products</button>
+                <button class="tab-button" data-tab="sell" onclick="showTab('sell')">Sell with Us</button>
+                <button class="tab-button" data-tab="orders" onclick="showTab('orders')">My Orders</button>
+                <button class="tab-button" data-tab="cart" onclick="showTab('cart')">Shopping Cart</button>
             </div>
         </div>
 
@@ -835,28 +881,48 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p>Email: info@tomshelljewelry.com</p>
-                <p>Phone: +1 (800) 123-4567</p>
+                <p>Phone: +91 7004053551</p>
                 <p>Hours: Mon-Fri 9AM-6PM EST</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Tom & Shell Jewelry. All rights reserved.</p>
+            <p>&copy; 2026 Tom & Shell Jewellery. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Data Storage
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc, setDoc, doc, getDoc, getDocs, query, where, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const productsCollection = collection(db, 'products');
+        const ordersCollection = collection(db, 'orders');
+        const usersCollection = collection(db, 'users');
+        const logsCollection = collection(db, 'activityLogs');
+
         let products = [];
         let cart = [];
         let orders = [];
         let currentUser = null;
+        let userProfile = null;
         let isSignupMode = false;
 
-        // Initialize with sample products
-        function initializeSampleProducts() {
+        async function seedSampleProducts() {
             const sampleProducts = [
                 {
-                    id: 1,
                     name: "Gold Diamond Ring",
                     category: "rings",
                     price: 299.99,
@@ -865,7 +931,6 @@
                     icon: "💍"
                 },
                 {
-                    id: 2,
                     name: "Silver Pearl Necklace",
                     category: "necklaces",
                     price: 149.99,
@@ -874,7 +939,6 @@
                     icon: "✨"
                 },
                 {
-                    id: 3,
                     name: "Rose Gold Bracelet",
                     category: "bracelets",
                     price: 189.99,
@@ -883,7 +947,6 @@
                     icon: "💫"
                 },
                 {
-                    id: 4,
                     name: "Diamond Stud Earrings",
                     category: "earrings",
                     price: 249.99,
@@ -892,7 +955,6 @@
                     icon: "💎"
                 },
                 {
-                    id: 5,
                     name: "Gold Pendant Set",
                     category: "sets",
                     price: 399.99,
@@ -901,7 +963,6 @@
                     icon: "👑"
                 },
                 {
-                    id: 6,
                     name: "Turquoise Bracelet",
                     category: "bracelets",
                     price: 99.99,
@@ -910,45 +971,64 @@
                     icon: "🌊"
                 }
             ];
-            products = sampleProducts;
-            renderProducts();
+
+            const promises = sampleProducts.map(product => addDoc(productsCollection, {
+                ...product,
+                createdAt: serverTimestamp()
+            }));
+            await Promise.all(promises);
         }
 
-        // Render Products
+        async function loadProducts() {
+            const productsQuery = query(productsCollection, orderBy('createdAt', 'desc'));
+            onSnapshot(productsQuery, (snapshot) => {
+                products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderProducts();
+            });
+
+            const snapshot = await getDocs(productsCollection);
+            if (snapshot.empty) {
+                await seedSampleProducts();
+            }
+        }
+
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = products.map(product => `
                 <div class="product-card">
-                    <div class="product-image">${product.icon}</div>
+                    <div class="product-image">${product.icon || '💍'}</div>
                     <div class="product-info">
                         <div class="product-name">${product.name}</div>
                         <div class="product-description">${product.description}</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-price">$${Number(product.price).toFixed(2)}</div>
                         <div class="product-actions">
-                            <button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
-                            <button onclick="viewProduct(${product.id})" style="background: #f0f0f0; color: #333;">View</button>
+                            <button class="btn-add-cart" onclick="addToCart('${product.id}')">Add to Cart</button>
+                            <button onclick="viewProduct('${product.id}')" style="background: #f0f0f0; color: #333;">View</button>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Add to Cart
+        function getProductById(productId) {
+            return products.find(p => String(p.id) === String(productId));
+        }
+
         function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = getProductById(productId);
             if (!product) return;
 
-            const cartItem = cart.find(item => item.id === productId);
+            const cartItem = cart.find(item => String(item.id) === String(productId));
             if (cartItem) {
                 cartItem.quantity++;
             } else {
                 cart.push({ ...product, quantity: 1 });
             }
             updateCart();
+            logActivity('add_to_cart', { productId: product.id, productName: product.name });
             alert(`${product.name} added to cart!`);
         }
 
-        // Update Cart Display
         function updateCart() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').textContent = count;
@@ -956,7 +1036,6 @@
             calculateTotals();
         }
 
-        // Render Cart Items
         function renderCartItems() {
             const container = document.getElementById('cartItems');
             if (cart.length === 0) {
@@ -968,24 +1047,23 @@
                 <div class="cart-item">
                     <div class="cart-item-info">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-price">$${Number(item.price).toFixed(2)}</div>
                     </div>
                     <div class="cart-item-quantity">
-                        <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <button onclick="updateQuantity('${item.id}', -1)">-</button>
                         <span>${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                        <button onclick="updateQuantity('${item.id}', 1)">+</button>
                     </div>
                     <div style="text-align: right; min-width: 100px;">
                         <div style="font-weight: bold; margin-bottom: 5px;">$${(item.price * item.quantity).toFixed(2)}</div>
-                        <button onclick="removeFromCart(${item.id})" style="background: #ff6b6b; padding: 5px 10px; font-size: 12px;">Remove</button>
+                        <button onclick="removeFromCart('${item.id}')" style="background: #ff6b6b; padding: 5px 10px; font-size: 12px;">Remove</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Update Quantity
         function updateQuantity(productId, change) {
-            const item = cart.find(c => c.id === productId);
+            const item = cart.find(c => String(c.id) === String(productId));
             if (item) {
                 item.quantity += change;
                 if (item.quantity <= 0) {
@@ -996,13 +1074,11 @@
             }
         }
 
-        // Remove from Cart
         function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
+            cart = cart.filter(item => String(item.id) !== String(productId));
             updateCart();
         }
 
-        // Calculate Totals
         function calculateTotals() {
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const tax = subtotal * 0.1;
@@ -1016,27 +1092,45 @@
             document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
         }
 
-        // Sell Form Handler
-        document.getElementById('sellForm').addEventListener('submit', function(e) {
+        function showSellMessage(message, type = 'success') {
+            const msg = document.getElementById('sellMessage');
+            msg.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                msg.innerHTML = '';
+            }, 3000);
+        }
+
+        document.getElementById('sellForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            if (!currentUser) {
+                showSellMessage('Please login first to add a product.', 'error');
+                toggleAuthModal();
+                return;
+            }
+
             const newProduct = {
-                id: products.length + 1,
                 name: document.getElementById('productName').value,
                 category: document.getElementById('productCategory').value,
                 price: parseFloat(document.getElementById('productPrice').value),
                 description: document.getElementById('productDescription').value,
                 stock: parseInt(document.getElementById('productStock').value),
-                icon: '💍'
+                icon: '💍',
+                sellerId: currentUser.uid,
+                sellerEmail: currentUser.email,
+                createdAt: serverTimestamp()
             };
-            products.push(newProduct);
-            document.getElementById('sellForm').reset();
-            const msg = document.getElementById('sellMessage');
-            msg.innerHTML = '<div class="message success">Product added successfully! It will appear in the store shortly.</div>';
-            renderProducts();
-            setTimeout(() => { msg.innerHTML = ''; }, 3000);
+
+            try {
+                await addDoc(productsCollection, newProduct);
+                document.getElementById('sellForm').reset();
+                showSellMessage('Product added successfully!');
+                logActivity('add_product', { name: newProduct.name, price: newProduct.price });
+            } catch (error) {
+                showSellMessage('Failed to add product. Try again later.', 'error');
+                console.error('Sell product error', error);
+            }
         });
 
-        // Auth Modal
         function toggleAuthModal() {
             const modal = document.getElementById('authModal');
             modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
@@ -1054,22 +1148,53 @@
             document.getElementById('authToggle').innerHTML = isSignupMode 
                 ? 'Already have an account? <a href="#" onclick="toggleSignupMode(event)">Login</a>'
                 : 'Don\'t have an account? <a href="#" onclick="toggleSignupMode(event)">Sign up</a>';
+            document.querySelector('#authForm button').textContent = isSignupMode ? 'Sign Up' : 'Login';
         }
 
-        document.getElementById('authForm').addEventListener('submit', function(e) {
+        async function updateUIForAuthUser() {
+            const authButton = document.getElementById('authButton');
+            const logoutButton = document.getElementById('logoutButton');
+            if (currentUser) {
+                authButton.style.display = 'none';
+                logoutButton.style.display = 'inline-flex';
+            } else {
+                authButton.style.display = 'inline-flex';
+                logoutButton.style.display = 'none';
+            }
+        }
+
+        async function loadUserProfile(uid) {
+            const userDoc = await getDoc(doc(usersCollection, uid));
+            return userDoc.exists() ? userDoc.data() : null;
+        }
+
+        document.getElementById('authForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const email = document.getElementById('authEmail').value;
             const password = document.getElementById('authPassword').value;
-            
-            if (isSignupMode) {
-                const name = document.getElementById('fullName').value;
-                currentUser = { email, name };
-                document.getElementById('authMessage').innerHTML = '<div class="message success">Account created successfully!</div>';
-            } else {
-                currentUser = { email };
-                document.getElementById('authMessage').innerHTML = '<div class="message success">Logged in successfully!</div>';
+
+            try {
+                if (isSignupMode) {
+                    const name = document.getElementById('fullName').value;
+                    const phone = document.getElementById('phone').value;
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    await setDoc(doc(usersCollection, user.uid), {
+                        email,
+                        name,
+                        phone,
+                        createdAt: serverTimestamp()
+                    });
+                    document.getElementById('authMessage').innerHTML = '<div class="message success">Account created successfully!</div>';
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    document.getElementById('authMessage').innerHTML = '<div class="message success">Logged in successfully!</div>';
+                }
+            } catch (error) {
+                document.getElementById('authMessage').innerHTML = `<div class="message error">${error.message}</div>`;
+                console.error('Authentication error', error);
             }
-            
+
             this.reset();
             setTimeout(() => {
                 closeAuthModal();
@@ -1077,8 +1202,11 @@
             }, 2000);
         });
 
-        // Checkout
-        function checkout() {
+        function logout() {
+            signOut(auth).catch(error => console.error('Logout error', error));
+        }
+
+        async function checkout() {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
@@ -1088,6 +1216,13 @@
                 toggleAuthModal();
                 return;
             }
+
+            const checkoutName = document.getElementById('checkoutName');
+            const checkoutEmail = document.getElementById('checkoutEmail');
+            if (userProfile?.name) {
+                checkoutName.value = userProfile.name;
+            }
+            checkoutEmail.value = currentUser.email;
             document.getElementById('checkoutModal').style.display = 'block';
         }
 
@@ -1095,31 +1230,57 @@
             document.getElementById('checkoutModal').style.display = 'none';
         }
 
-        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const order = {
-                id: orders.length + 1,
+                userId: currentUser.uid,
                 date: new Date().toLocaleDateString(),
-                items: [...cart],
-                total: parseFloat(document.getElementById('checkoutTotal').textContent.replace('$', '')),
                 customer: {
                     name: document.getElementById('checkoutName').value,
                     email: document.getElementById('checkoutEmail').value,
-                    phone: document.getElementById('checkoutPhone').value
-                }
+                    phone: document.getElementById('checkoutPhone').value,
+                    address: document.getElementById('checkoutAddress').value
+                },
+                items: cart.map(item => ({
+                    productId: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                })),
+                total: parseFloat(document.getElementById('checkoutTotal').textContent.replace('$', '')),
+                status: 'pending',
+                createdAt: serverTimestamp()
             };
-            
-            orders.push(order);
-            alert(`Order #${order.id} placed successfully! You will receive a confirmation email shortly.`);
-            cart = [];
-            updateCart();
-            closeCheckout();
-            this.reset();
-            renderOrders();
+
+            try {
+                const orderRef = await addDoc(ordersCollection, order);
+                alert(`Order placed successfully! Order ID: ${orderRef.id}`);
+                cart = [];
+                updateCart();
+                closeCheckout();
+                this.reset();
+                logActivity('order_placed', { orderId: orderRef.id, total: order.total });
+            } catch (error) {
+                alert('Failed to place order. Please try again.');
+                console.error('Order creation error', error);
+            }
         });
 
-        // Render Orders
+        async function loadOrders() {
+            if (!currentUser) {
+                orders = [];
+                renderOrders();
+                return;
+            }
+
+            const ordersQuery = query(ordersCollection, where('userId', '==', currentUser.uid), orderBy('createdAt', 'desc'));
+            onSnapshot(ordersQuery, (snapshot) => {
+                orders = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderOrders();
+            });
+        }
+
         function renderOrders() {
             const container = document.getElementById('ordersContainer');
             if (orders.length === 0) {
@@ -1148,39 +1309,78 @@
             `).join('');
         }
 
-        // Tab Navigation
         function showTab(tabName) {
             const contents = document.querySelectorAll('.tab-content');
             const buttons = document.querySelectorAll('.tab-button');
-            
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+
+            const targetContent = document.getElementById(tabName);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            const targetButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
             window.scrollTo(0, 0);
         }
 
-        // View Product Details
         function viewProduct(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = getProductById(productId);
             if (product) {
-                alert(`${product.name}\n\nPrice: $${product.price.toFixed(2)}\n\nDescription: ${product.description}\n\nIn Stock: ${product.stock}`);
+                alert(`${product.name}\n\nPrice: $${Number(product.price).toFixed(2)}\n\nDescription: ${product.description}\n\nIn Stock: ${product.stock}`);
+                logActivity('view_product', { productId: product.id, productName: product.name });
             }
         }
 
-        // Initialize on load
-        window.addEventListener('load', function() {
-            initializeSampleProducts();
+        async function logActivity(action, details = {}) {
+            if (!currentUser) return;
+            try {
+                await addDoc(logsCollection, {
+                    userId: currentUser.uid,
+                    email: currentUser.email,
+                    action,
+                    details,
+                    timestamp: serverTimestamp()
+                });
+            } catch (error) {
+                console.error('Activity log error', error);
+            }
+        }
+
+        onAuthStateChanged(auth, async (user) => {
+            currentUser = user;
+            if (user) {
+                userProfile = await loadUserProfile(user.uid);
+                loadOrders();
+            } else {
+                userProfile = null;
+                orders = [];
+                renderOrders();
+            }
+            updateUIForAuthUser();
+        });
+
+        window.addToCart = addToCart;
+        window.viewProduct = viewProduct;
+        window.updateQuantity = updateQuantity;
+        window.removeFromCart = removeFromCart;
+        window.toggleAuthModal = toggleAuthModal;
+        window.closeAuthModal = closeAuthModal;
+        window.toggleSignupMode = toggleSignupMode;
+        window.checkout = checkout;
+        window.closeCheckout = closeCheckout;
+        window.showTab = showTab;
+        window.logout = logout;
+
+        window.addEventListener('load', async function() {
+            await loadProducts();
             closeAuthModal();
             closeCheckout();
         });
 
-        // Close modal on outside click
         window.onclick = function(event) {
             const authModal = document.getElementById('authModal');
             const checkoutModal = document.getElementById('checkoutModal');
@@ -1190,7 +1390,7 @@
             if (event.target === checkoutModal) {
                 checkoutModal.style.display = 'none';
             }
-        }
+        };
     </script>
 </body>
 </html>
