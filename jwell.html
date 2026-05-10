@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom & Shell Jwel.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #ff5252;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 40px;
+            font-size: 16px;
+            border: 2px solid white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ddd 0%, #eee 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions button {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .btn-add-cart {
+            background: #667eea;
+        }
+
+        .btn-add-cart:hover {
+            background: #5568d3;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .cart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-item-quantity button {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .cart-summary {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .summary-row.total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 14px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-button {
+            background: transparent;
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-button:hover {
+            background: #f5f5f5;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            nav {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">💎</span>
+                <span>Tom & Shell</span>
+            </div>
+            <nav>
+                <a onclick="showTab('products')">Shop</a>
+                <a onclick="showTab('sell')">Sell Products</a>
+                <a onclick="showTab('orders')">My Orders</a>
+                <div class="header-buttons">
+                    <div class="cart-icon" onclick="showTab('cart')">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <button onclick="toggleAuthModal()">Login/Signup</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Tom & Shell Jwel</h1>
+            <p>Discover exquisite jewelry handpicked from talented artisans worldwide</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="showTab('products')">Shop Now</button>
+                <button class="btn-secondary" onclick="showTab('sell')">Become a Seller</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div style="margin: 40px 0;">
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('products')">Shop Products</button>
+                <button class="tab-button" onclick="showTab('sell')">Sell with Us</button>
+                <button class="tab-button" onclick="showTab('orders')">My Orders</button>
+                <button class="tab-button" onclick="showTab('cart')">Shopping Cart</button>
+            </div>
+        </div>
+
+        <!-- Products Tab -->
+        <div id="products" class="tab-content active section">
+            <h2 class="section-title">Featured Collections</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Sell Tab -->
+        <div id="sell" class="tab-content section">
+            <h2 class="section-title">Sell Your Jewellery</h2>
+            <div class="cart-container" style="max-width: 600px; margin: 0 auto;">
+                <h3 style="margin-bottom: 20px;">Add Your Product</h3>
+                <div id="sellMessage"></div>
+                <form id="sellForm">
+                    <div class="form-group">
+                        <label>Product Name *</label>
+                        <input type="text" id="productName" placeholder="e.g., Gold Ring with Diamonds" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Category *</label>
+                        <select id="productCategory" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px;" required>
+                            <option value="">Select Category</option>
+                            <option value="rings">Rings</option>
+                            <option value="necklaces">Necklaces</option>
+                            <option value="bracelets">Bracelets</option>
+                            <option value="earrings">Earrings</option>
+                            <option value="pendants">Pendants</option>
+                            <option value="sets">Sets</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price ($) *</label>
+                        <input type="number" id="productPrice" placeholder="99.99" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="productDescription" placeholder="Describe your jewelry, materials, dimensions, etc." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Quantity *</label>
+                        <input type="number" id="productStock" placeholder="10" min="1" required>
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 15px; font-size: 16px;">Add Product to Store</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="orders" class="tab-content section">
+            <h2 class="section-title">Your Orders</h2>
+            <div class="cart-container" id="ordersContainer">
+                <p style="text-align: center; color: #999;">No orders yet. Start shopping!</p>
+            </div>
+        </div>
+
+        <!-- Cart Tab -->
+        <div id="cart" class="tab-content section">
+            <h2 class="section-title">Shopping Cart</h2>
+            <div class="cart-container">
+                <div id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (10%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="shipping">$9.99</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+                <button style="width: 100%; padding: 15px; font-size: 16px;" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="section" style="background: #f9f9f9; margin: 0 -20px; padding: 60px 20px;">
+            <h2 class="section-title">Why Choose Tom & Shell?</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-title">Premium Quality</div>
+                    <div class="feature-description">Carefully curated jewelry from trusted artisans</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚚</div>
+                    <div class="feature-title">Fast Shipping</div>
+                    <div class="feature-description">Secure packaging and quick delivery</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Secure Payment</div>
+                    <div class="feature-description">Safe and encrypted transactions</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-title">24/7 Support</div>
+                    <div class="feature-description">Dedicated customer service team</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authTitle">Login</h2>
+                <span class="close" onclick="closeAuthModal()">&times;</span>
+            </div>
+            <div id="authMessage"></div>
+            <form id="authForm">
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="authEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="authPassword" placeholder="Enter password" required>
+                </div>
+                <div id="signupFields" style="display: none;">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="fullName" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" id="phone" placeholder="Your Phone Number">
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">
+                <span id="authToggle">Don't have an account? <a href="#" onclick="toggleSignupMode(event)">Sign up</a></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <span class="close" onclick="closeCheckout()">&times;</span>
+            </div>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="checkoutName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="checkoutEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" id="checkoutPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address *</label>
+                    <textarea id="checkoutAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Card Number *</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Expiry Date *</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV *</label>
+                        <input type="text" id="cardCVV" placeholder="123" required>
+                    </div>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <div class="summary-row">
+                        <span>Order Total:</span>
+                        <span id="checkoutTotal">$0.00</span>
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%; padding: 15px; font-size: 16px;">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tom & Shell</h3>
+                <p>Your destination for premium handcrafted jewelry.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showTab('products')">Shop</a></li>
+                    <li><a href="#" onclick="showTab('sell')">Sell With Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@tomshelljewelry.com</p>
+                <p>Phone: +1 (800) 123-4567</p>
+                <p>Hours: Mon-Fri 9AM-6PM EST</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Tom & Shell Jewelry. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Storage
+        let products = [];
+        let cart = [];
+        let orders = [];
+        let currentUser = null;
+        let isSignupMode = false;
+
+        // Initialize with sample products
+        function initializeSampleProducts() {
+            const sampleProducts = [
+                {
+                    id: 1,
+                    name: "Gold Diamond Ring",
+                    category: "rings",
+                    price: 299.99,
+                    description: "Beautiful 18K gold ring with genuine diamond",
+                    stock: 5,
+                    icon: "💍"
+                },
+                {
+                    id: 2,
+                    name: "Silver Pearl Necklace",
+                    category: "necklaces",
+                    price: 149.99,
+                    description: "Elegant silver chain with fresh water pearl",
+                    stock: 8,
+                    icon: "✨"
+                },
+                {
+                    id: 3,
+                    name: "Rose Gold Bracelet",
+                    category: "bracelets",
+                    price: 189.99,
+                    description: "Modern rose gold bangle bracelet",
+                    stock: 6,
+                    icon: "💫"
+                },
+                {
+                    id: 4,
+                    name: "Diamond Stud Earrings",
+                    category: "earrings",
+                    price: 249.99,
+                    description: "Classic diamond stud earrings",
+                    stock: 4,
+                    icon: "💎"
+                },
+                {
+                    id: 5,
+                    name: "Gold Pendant Set",
+                    category: "sets",
+                    price: 399.99,
+                    description: "Complete jewelry set with matching pieces",
+                    stock: 3,
+                    icon: "👑"
+                },
+                {
+                    id: 6,
+                    name: "Turquoise Bracelet",
+                    category: "bracelets",
+                    price: 99.99,
+                    description: "Semi-precious turquoise stone bracelet",
+                    stock: 10,
+                    icon: "🌊"
+                }
+            ];
+            products = sampleProducts;
+            renderProducts();
+        }
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.icon}</div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button onclick="viewProduct(${product.id})" style="background: #f0f0f0; color: #333;">View</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const cartItem = cart.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCart();
+            alert(`${product.name} added to cart!`);
+        }
+
+        // Update Cart Display
+        function updateCart() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            renderCartItems();
+            calculateTotals();
+        }
+
+        // Render Cart Items
+        function renderCartItems() {
+            const container = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999;">Your cart is empty</p>';
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                    <div style="text-align: right; min-width: 100px;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <button onclick="removeFromCart(${item.id})" style="background: #ff6b6b; padding: 5px 10px; font-size: 12px;">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(c => c.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Calculate Totals
+        function calculateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.1;
+            const shipping = cart.length > 0 ? 9.99 : 0;
+            const total = subtotal + tax + shipping;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Sell Form Handler
+        document.getElementById('sellForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newProduct = {
+                id: products.length + 1,
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                description: document.getElementById('productDescription').value,
+                stock: parseInt(document.getElementById('productStock').value),
+                icon: '💍'
+            };
+            products.push(newProduct);
+            document.getElementById('sellForm').reset();
+            const msg = document.getElementById('sellMessage');
+            msg.innerHTML = '<div class="message success">Product added successfully! It will appear in the store shortly.</div>';
+            renderProducts();
+            setTimeout(() => { msg.innerHTML = ''; }, 3000);
+        });
+
+        // Auth Modal
+        function toggleAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function toggleSignupMode(e) {
+            e.preventDefault();
+            isSignupMode = !isSignupMode;
+            document.getElementById('authTitle').textContent = isSignupMode ? 'Sign Up' : 'Login';
+            document.getElementById('signupFields').style.display = isSignupMode ? 'block' : 'none';
+            document.getElementById('authToggle').innerHTML = isSignupMode 
+                ? 'Already have an account? <a href="#" onclick="toggleSignupMode(event)">Login</a>'
+                : 'Don\'t have an account? <a href="#" onclick="toggleSignupMode(event)">Sign up</a>';
+        }
+
+        document.getElementById('authForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            
+            if (isSignupMode) {
+                const name = document.getElementById('fullName').value;
+                currentUser = { email, name };
+                document.getElementById('authMessage').innerHTML = '<div class="message success">Account created successfully!</div>';
+            } else {
+                currentUser = { email };
+                document.getElementById('authMessage').innerHTML = '<div class="message success">Logged in successfully!</div>';
+            }
+            
+            this.reset();
+            setTimeout(() => {
+                closeAuthModal();
+                document.getElementById('authMessage').innerHTML = '';
+            }, 2000);
+        });
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            if (!currentUser) {
+                alert('Please login first!');
+                toggleAuthModal();
+                return;
+            }
+            document.getElementById('checkoutModal').style.display = 'block';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const order = {
+                id: orders.length + 1,
+                date: new Date().toLocaleDateString(),
+                items: [...cart],
+                total: parseFloat(document.getElementById('checkoutTotal').textContent.replace('$', '')),
+                customer: {
+                    name: document.getElementById('checkoutName').value,
+                    email: document.getElementById('checkoutEmail').value,
+                    phone: document.getElementById('checkoutPhone').value
+                }
+            };
+            
+            orders.push(order);
+            alert(`Order #${order.id} placed successfully! You will receive a confirmation email shortly.`);
+            cart = [];
+            updateCart();
+            closeCheckout();
+            this.reset();
+            renderOrders();
+        });
+
+        // Render Orders
+        function renderOrders() {
+            const container = document.getElementById('ordersContainer');
+            if (orders.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999;">No orders yet. Start shopping!</p>';
+                return;
+            }
+
+            container.innerHTML = orders.map(order => `
+                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <strong>Order #${order.id}</strong>
+                        <span style="color: #667eea;">${order.date}</span>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>${order.customer.name}</strong><br>
+                        ${order.customer.email}
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>Items:</strong><br>
+                        ${order.items.map(item => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('<br>')}
+                    </div>
+                    <div style="font-size: 18px; font-weight: bold; color: #667eea;">
+                        Total: $${order.total.toFixed(2)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Tab Navigation
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // View Product Details
+        function viewProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`${product.name}\n\nPrice: $${product.price.toFixed(2)}\n\nDescription: ${product.description}\n\nIn Stock: ${product.stock}`);
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            initializeSampleProducts();
+            closeAuthModal();
+            closeCheckout();
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const authModal = document.getElementById('authModal');
+            const checkoutModal = document.getElementById('checkoutModal');
+            if (event.target === authModal) {
+                authModal.style.display = 'none';
+            }
+            if (event.target === checkoutModal) {
+                checkoutModal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
